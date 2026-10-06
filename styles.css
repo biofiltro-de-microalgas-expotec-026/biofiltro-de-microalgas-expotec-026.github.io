@@ -1,0 +1,233 @@
+@font-face {
+    font-family: "Neue Haas Grotesk";
+    src: url('NeueHaasDisplayMediu.ttf');
+}
+
+:root {
+    --base-bg: #121612;
+    --moss-dark: #4e6146;
+    --moss-light: #6b7f6a;
+    --moss-glow: #384632;
+    --amber-accent: #f59e0b;
+    --text-light: #f3f4f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--base-bg);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+.font-neue {
+    font-family: 'Neue Haas Grotesk Display', 'Neue Haas Grotesk', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+.font-heading {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Preloader Styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    color: var(--text-light);
+    overflow: hidden;
+    z-index: 50;
+}
+
+.preloader-bg, .preloader-revealer {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    transform-origin: center;
+}
+
+.preloader-bg { background-color: #0c0f0c; }
+
+.preloader-revealer {
+    clip-path: circle(0% at 50% 50%);
+    will-change: transform;
+}
+
+.preloader-revealer-1 { background-color: #2b3827; }
+.preloader-revealer-2 { background-color: #3b4d34; }
+.preloader-revealer-3 { background-color: #4e6146; }
+.preloader-revealer-4 { background-color: var(--base-bg); }
+
+.items {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.preloader-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+    will-change: transform, opacity;
+    text-align: center;
+}
+
+/* Glassmorphism Containers con tono musgo cálido */
+.glass-panel {
+    background: rgba(30, 38, 29, 0.65);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(107, 127, 106, 0.25);
+    border-radius: 1.25rem;
+}
+
+/* Cilindro Biofiltro con tonos musgo/algas cálidos */
+.bio-cylinder {
+    position: relative;
+    width: 180px;
+    height: 380px;
+    background: linear-gradient(135deg, rgba(107, 127, 106, 0.25) 0%, rgba(78, 97, 70, 0.6) 50%, rgba(42, 54, 38, 0.9) 100%);
+    border-radius: 90px / 30px;
+    border: 2px solid rgba(107, 127, 106, 0.5);
+    box-shadow: 0 0 50px rgba(78, 97, 70, 0.35), inset 0 0 30px rgba(107, 127, 106, 0.4);
+    overflow: hidden;
+}
+
+.bio-cylinder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: rgba(107, 127, 106, 0.35);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.bubble {
+    position: absolute;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(107,127,106,0.4));
+    border-radius: 50%;
+    bottom: -20px;
+    animation: rise 4s infinite ease-in;
+}
+
+@keyframes rise {
+    0% {
+        bottom: -20px;
+        transform: translateX(0) scale(0.6);
+        opacity: 0;
+    }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.9; }
+    100% {
+        bottom: 100%;
+        transform: translateX(var(--drift)) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.char-span, .word-span {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.word-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+section.hero {
+    min-height: 100vh;
+    padding-bottom: 25vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Transición por fundido/degradado natural estático */
+section.transition-section {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0a0d0a;
+    padding: 10rem 2rem 6rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-container {
+    max-width: 900px;
+    position: relative;
+    z-index: 11;
+}
+
+.reveal-text {
+    font-size: 2.8rem;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 2.5rem;
+}
+
+.italic-text {
+    font-style: italic;
+    font-weight: 300;
+    color: #8fa68d;
+}
+
+.sub-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #9ca3af;
+    max-width: 650px;
+}
+
+.marquee-wrapper {
+    display: flex;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee-smooth 25s linear infinite;
+}
+
+@keyframes marquee-smooth {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.button-3d {
+    margin-top: 30px;
+}
+
+section.hero {
+    position: relative;
+}
+
+section.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(to bottom, transparent, #0a0d0a);
+    pointer-events: none;
+    z-index: 20;
+}
